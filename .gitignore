@@ -16,6 +16,9 @@ __pycache__/
 .env.*
 !.env.example
 
+# Sensitive AI Configuration
+backend/app/data/system_prompt.txt
+
 # IDE
 .vscode/
 .idea/

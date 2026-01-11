@@ -7,6 +7,11 @@
     @apply border-tactical-border;
   }
   
+  /* Fluid Typography Base */
+  html {
+    font-size: clamp(14px, 1.5vw, 16px);
+  }
+  
   body {
     @apply bg-tactical-bg text-tactical-text-primary antialiased;
     font-family: 'Inter', system-ui, sans-serif;

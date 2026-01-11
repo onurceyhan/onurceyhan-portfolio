@@ -1,7 +1,18 @@
 import { ref, computed } from 'vue'
 
-// Reactive language state
-const currentLanguage = ref(localStorage.getItem('portfolio-language') || null)
+// Detect browser language
+const detectBrowserLanguage = () => {
+  const browserLang = navigator.language || navigator.userLanguage
+  // Check if browser language starts with 'tr' (Turkish)
+  if (browserLang.toLowerCase().startsWith('tr')) {
+    return 'tr'
+  }
+  // Default to English for all other languages
+  return 'en'
+}
+
+// Reactive language state - auto-detect if not previously set
+const currentLanguage = ref(localStorage.getItem('portfolio-language') || detectBrowserLanguage())
 
 // Translations
 const translations = {
@@ -205,15 +216,10 @@ export function useLanguage() {
     return translations[currentLanguage.value] || translations.en
   })
 
-  const isLanguageSelected = computed(() => {
-    return currentLanguage.value !== null
-  })
-
   return {
     currentLanguage,
     setLanguage,
-    t,
-    isLanguageSelected
+    t
   }
 }
 
