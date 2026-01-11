@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+venv/
+
+# Build outputs
+dist/
+dist-ssr/
+
+# Cache
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
