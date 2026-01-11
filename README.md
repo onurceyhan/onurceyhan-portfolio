@@ -336,9 +336,9 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ## 📬 Contact
 
 **Onur Ceyhan**
-- Portfolio: [Your Portfolio URL]
+- Portfolio: [will be released]
 - GitHub: [@onurceyhan](https://github.com/onurceyhan)
-- LinkedIn: [Your LinkedIn]
+- LinkedIn: [@onur-ceyhan](https://www.linkedin.com/in/onur-ceyhan)
 
 ---
 
