@@ -15,13 +15,25 @@ except ImportError:
 
 
 def load_system_prompt() -> str:
-    """Load system prompt from external file"""
+    """
+    Load system prompt from environment variable (production) or file (local)
+    Priority: SYSTEM_PROMPT env var > system_prompt.txt file > fallback
+    """
+    # 1. Try environment variable (for Render/production)
+    env_prompt = os.getenv("SYSTEM_PROMPT")
+    if env_prompt:
+        print("📝 System Prompt: Loaded from SYSTEM_PROMPT environment variable")
+        return env_prompt
+    
+    # 2. Try local file (for development)
     try:
         prompt_path = Path(__file__).parent.parent / "data" / "system_prompt.txt"
         with open(prompt_path, "r", encoding="utf-8") as f:
-            return f.read()
+            content = f.read()
+            print("📝 System Prompt: Loaded from system_prompt.txt file")
+            return content
     except FileNotFoundError:
-        print("⚠️  System prompt file not found. Using fallback prompt.")
+        print("⚠️  System prompt not found in env or file. Using fallback prompt.")
         return "Sen Onur Ceyhan'ın portfolyo asistanısın. Sadece onun projeleri ve yetenekleri hakkında bilgi ver."
 
 
@@ -33,11 +45,11 @@ class ChatService:
         self.use_groq = GROQ_AVAILABLE and groq_api_key
         self.groq_client = Groq(api_key=groq_api_key) if self.use_groq else None
         
-        # Load system prompt from external file
+        # Load system prompt (env var in production, file in local)
         self.system_prompt = load_system_prompt()
         
         print(f"🤖 Chat: {'Groq' if self.use_groq else 'Mock'}")
-        print(f"📝 System Prompt: Loaded ({len(self.system_prompt)} chars)")
+        print(f"✅ System Prompt: {len(self.system_prompt)} characters loaded")
     
     def get_response(self, message: str) -> dict:
         """Get AI response with portfolio-focused protection"""

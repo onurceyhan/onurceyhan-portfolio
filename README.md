@@ -216,8 +216,14 @@ VITE_API_URL=https://your-backend-url.com
 
 **Environment Variables:**
 ```env
+# Required
 GROQ_API_KEY=your_groq_api_key
 ENVIRONMENT=production
+
+# System Prompt (copy from backend/app/data/system_prompt.txt)
+SYSTEM_PROMPT="YOUR PROMPT"
+
+# Optional
 HOST=0.0.0.0
 PORT=8000
 RATE_LIMIT_PER_MINUTE=10
