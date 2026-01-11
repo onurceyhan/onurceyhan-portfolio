@@ -2,10 +2,13 @@
 
 Modern, AI-powered portfolio website featuring a cyberpunk-themed design, intelligent chatbot, and advanced security measures.
 
+[![Portfolio](https://img.shields.io/badge/portfolio-live-success.svg)](https://onurceyhan-portfolio.vercel.app/)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Vue](https://img.shields.io/badge/Vue-3.x-42b883.svg)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688.svg)
 ![Python](https://img.shields.io/badge/Python-3.10+-3776ab.svg)
+
+**🌐 [View Portfolio](https://onurceyhan-portfolio.vercel.app/)**
 
 ---
 
@@ -336,7 +339,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ## 📬 Contact
 
 **Onur Ceyhan**
-- Portfolio: [will be released]
+- Portfolio: [https://onurceyhan-portfolio.vercel.app](https://onurceyhan-portfolio.vercel.app)
 - GitHub: [@onurceyhan](https://github.com/onurceyhan)
 - LinkedIn: [@onur-ceyhan](https://www.linkedin.com/in/onur-ceyhan)
 
