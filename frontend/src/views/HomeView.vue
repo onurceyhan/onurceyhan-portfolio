@@ -6,10 +6,12 @@ import TeraziShowcase from '../components/TeraziShowcase.vue'
 import RagPipeline from '../components/RagPipeline.vue'
 import AIChatTerminal from '../components/AIChatTerminal.vue'
 import TechArsenal from '../components/TechArsenal.vue'
+import ProjectCard from '../components/ProjectCard.vue'
+import { featuredWebsites } from '../data/projects'
 import { useReveal } from '../composables/useReveal'
 import { useLanguage } from '../composables/useLanguage'
 
-const { t } = useLanguage()
+const { t, currentLanguage } = useLanguage()
 const emit = defineEmits(['navigate'])
 
 useReveal()
@@ -48,19 +50,40 @@ useReveal()
       </div>
     </section>
 
-    <!-- Tüm projeler CTA -->
-    <section class="reveal flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 glass-panel p-6 sm:p-8 border border-cyber-cyan/20">
-      <div>
-        <h3 class="font-black text-cyber-yellow text-xl sm:text-2xl mb-1">{{ t.projects.title.replace('_', ' ') }}</h3>
-        <p class="text-tactical-text-secondary text-sm max-w-md">{{ t.projects.subtitle }}</p>
+    <!-- İşletmeniz için web sitesi — küçük işler de bu portföyle -->
+    <section class="scroll-mt-24 py-8 sm:py-12">
+      <div class="max-w-3xl mb-8">
+        <p class="section-kicker mb-4 reveal">03 — WEB &amp; ARAYÜZ</p>
+        <h2 class="reveal reveal-delay-1 font-black text-tactical-text-primary leading-tight mb-3" style="font-size: clamp(1.6rem, 3vw + 0.5rem, 2.6rem);">
+          {{ t.web.title }}
+        </h2>
+        <p class="reveal reveal-delay-2 text-tactical-text-secondary leading-relaxed" style="font-size: clamp(0.9rem, 1vw + 0.4rem, 1.05rem);">
+          {{ t.web.subtitle }}
+        </p>
       </div>
-      <button
-        @click="emit('navigate', 'projects')"
-        class="group inline-flex items-center gap-2 px-6 py-3 bg-cyber-cyan/10 border border-cyber-cyan/50 hover:border-cyber-yellow hover:bg-cyber-yellow/10 rounded text-cyber-cyan hover:text-cyber-yellow font-mono font-bold text-sm uppercase tracking-wider transition-all whitespace-nowrap"
-      >
-        {{ t.nav.projects }}
-        <ArrowRight :size="16" class="group-hover:translate-x-1 transition-transform" />
-      </button>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div v-for="(site, i) in featuredWebsites" :key="site.id" :class="['reveal', `reveal-delay-${Math.min(i, 3)}`]">
+          <ProjectCard
+            :title="site.title[currentLanguage]"
+            :description="site.description[currentLanguage]"
+            :tech-stack="site.techStack"
+            :live-url="site.liveUrl"
+            :repo-url="site.repoUrl"
+            :image-url="site.imageUrl"
+          />
+        </div>
+      </div>
+
+      <div class="reveal flex justify-center mt-8">
+        <button
+          @click="emit('navigate', 'projects')"
+          class="group inline-flex items-center gap-2 px-6 py-3 border border-tactical-border hover:border-tactical-accent/50 rounded-lg text-tactical-text-secondary hover:text-tactical-text-primary font-medium text-sm transition-all"
+        >
+          {{ t.web.viewAll }}
+          <ArrowRight :size="16" class="group-hover:translate-x-1 transition-transform" />
+        </button>
+      </div>
     </section>
 
   </div>

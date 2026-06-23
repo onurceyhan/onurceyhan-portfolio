@@ -1,5 +1,5 @@
 <script setup>
-import { ExternalLink, ArrowRight, Scale } from 'lucide-vue-next'
+import { ExternalLink, ArrowRight, Scale, Award } from 'lucide-vue-next'
 import { useLanguage } from '../composables/useLanguage'
 
 const { t } = useLanguage()
@@ -22,12 +22,15 @@ const techStack = ['Vue 3', 'FastAPI', 'PostgreSQL', 'pgvector', 'LLM / RAG', 'S
     <div class="relative grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center">
       <!-- ── Sol: anlatı ─────────────────────────────────────────── -->
       <div>
-        <div class="flex items-center gap-3 mb-5 reveal">
+        <div class="flex flex-wrap items-center gap-2.5 mb-5 reveal">
           <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-terazi-accent/50 bg-terazi-accent/10 text-terazi-accent-soft font-mono text-[10px] font-bold tracking-[0.2em] uppercase">
             <Scale :size="12" /> {{ t.terazi.badge }}
           </span>
-          <span class="section-kicker text-terazi-accent-soft/70">{{ t.terazi.kicker }}</span>
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-tactical-accent/40 bg-tactical-accent/10 text-tactical-accent font-mono text-[10px] font-bold tracking-[0.12em] uppercase">
+            <Award :size="12" /> {{ t.terazi.accolade }}
+          </span>
         </div>
+        <p class="section-kicker text-terazi-accent-soft/70 mb-4 reveal">{{ t.terazi.kicker }}</p>
 
         <h2 class="reveal reveal-delay-1 font-black tracking-tight text-terazi-cream leading-none mb-3" style="font-size: clamp(2.75rem, 7vw, 5rem);">
           {{ t.terazi.title }}

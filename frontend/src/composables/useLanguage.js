@@ -69,6 +69,7 @@ const translations = {
     terazi: {
       kicker: 'EN BÜYÜK PROJEM · CANLI ÖRNEK',
       badge: 'EN BÜYÜK PROJE',
+      accolade: 'BIGG+ Boğaziçi · 1. Aşama onaylı',
       title: 'Terazi',
       tagline: 'Türk hukukuna özel yapay zekâ asistanı.',
       frame: 'Yukarıdaki yetenekleri tek bir üründe topladığım, gerçek kullanıcıların kullandığı en kapsamlı projem.',
@@ -150,6 +151,11 @@ const translations = {
         tools: 'araçlar'
       }
     },
+    web: {
+      title: 'İşletmeniz İçin Web Sitesi',
+      subtitle: 'Sadece yapay zekâ değil — küçük işletmeler için modern, hızlı ve mobil uyumlu tanıtım siteleri de tasarlıyorum. Birkaç örnek:',
+      viewAll: 'Tüm projeleri gör'
+    },
     languageModal: {
       title: 'DİL SEÇİMİ',
       subtitle: 'Tercih ettiğiniz dili seçin',
@@ -209,6 +215,7 @@ const translations = {
     terazi: {
       kicker: 'MY BIGGEST PROJECT · LIVE EXAMPLE',
       badge: 'BIGGEST PROJECT',
+      accolade: 'BIGG+ Boğaziçi · Stage 1 approved',
       title: 'Terazi',
       tagline: 'An AI legal assistant built for Turkish law.',
       frame: 'My most comprehensive project — where I brought all of the above together into one product real users rely on.',
@@ -289,6 +296,11 @@ const translations = {
         web: 'web',
         tools: 'tools'
       }
+    },
+    web: {
+      title: 'Websites For Your Business',
+      subtitle: 'Not just AI — I also design modern, fast, mobile-friendly websites for small businesses. A few examples:',
+      viewAll: 'See all projects'
     },
     languageModal: {
       title: 'LANGUAGE SELECTION',

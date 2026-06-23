@@ -1,11 +1,12 @@
 <script setup>
 import { ref, computed } from 'vue'
 import ProjectCard from '../components/ProjectCard.vue'
-import { Briefcase, Filter, Scale, ExternalLink, ArrowUpRight } from 'lucide-vue-next'
+import { Briefcase, Filter, Scale, ExternalLink, ArrowUpRight, Award } from 'lucide-vue-next'
 import { useLanguage } from '../composables/useLanguage'
 import { useReveal } from '../composables/useReveal'
+import { websites } from '../data/projects'
 
-const { t } = useLanguage()
+const { t, currentLanguage } = useLanguage()
 useReveal()
 
 // Amiral gemi — Terazi (her zaman en üstte, ayrı sunum)
@@ -16,66 +17,14 @@ const teraziStats = [
   { value: '<30sn', key: 'analysis' },
 ]
 
-const projects = ref([
-  {
-    id: 1,
-    title: 'Uysal Psychology Clinic',
-    description: 'Modern, warm, and child-friendly website for a psychology clinic specializing in play therapy for children. Features responsive design and smooth animations.',
-    techStack: ['Vue 3', 'Vite', 'Tailwind CSS'],
-    liveUrl: 'https://psyhologyclinicsite.vercel.app/',
-    repoUrl: 'https://github.com/onurceyhan/psychologyclinicsite',
-    imageUrl: '/images/psyhologyclinicsite.png',
-    category: 'web'
-  },
-  {
-    id: 2,
-    title: 'Ceyhan Farm Website',
-    description: 'Responsive and animated website for a sustainable livestock farm in Antalya. Showcases breeding animals, sacrifice services, and natural farming practices.',
-    techStack: ['Vue.js', 'Vite', 'Tailwind CSS'],
-    liveUrl: 'https://ceyhan-farm.vercel.app/',
-    repoUrl: 'https://github.com/onurceyhan/ceyhan-farm',
-    imageUrl: '/images/ceyhan-farm.png',
-    category: 'web'
-  },
-  {
-    id: 3,
-    title: 'Metal Band Website',
-    description: 'Stunning dark-themed website with cyberpunk aesthetics, glitch effects, and retro CRT overlays. Features tour dates, music integration, and merch showcase.',
-    techStack: ['Vue 3', 'Vite', 'Tailwind CSS', 'CSS Animations'],
-    liveUrl: 'https://metalbandwebsite.vercel.app/',
-    repoUrl: 'https://github.com/onurceyhan/metalbandwebsite',
-    imageUrl: '/images/metalbandwebsite.png',
-    category: 'web'
-  },
-  {
-    id: 4,
-    title: 'Car Rental Website',
-    description: 'Modern and responsive car rental platform with clean UI design, smooth animations, and optimized user experience. Built with modern web practices.',
-    techStack: ['Vue 3', 'Vite', 'Tailwind CSS'],
-    liveUrl: 'https://rentacar-drab.vercel.app/',
-    repoUrl: 'https://github.com/onurceyhan/rentacar',
-    imageUrl: '',
-    category: 'web'
-  },
-  {
-    id: 5,
-    title: 'TagWise',
-    description: 'Smart AI-powered bookmarking tool that automatically analyzes webpages, generates meaningful titles, creates categories and tags for effortless content organization.',
-    techStack: ['Python', 'AI/ML', 'Web Scraping'],
-    liveUrl: '',
-    repoUrl: 'https://github.com/onurceyhan/tagwise',
-    imageUrl: '/images/tagwise.png',
-    category: 'ai'
-  }
-])
-
+const projects = websites
 const selectedFilter = ref('all')
 const filters = ['all', 'ai', 'web']
 
 const filteredProjects = computed(() =>
   selectedFilter.value === 'all'
-    ? projects.value
-    : projects.value.filter((p) => p.category === selectedFilter.value)
+    ? projects
+    : projects.filter((p) => p.category === selectedFilter.value)
 )
 </script>
 
@@ -97,9 +46,12 @@ const filteredProjects = computed(() =>
       <div class="absolute -top-24 -right-12 w-72 h-72 bg-cyber-cyan/5 rounded-full blur-3xl pointer-events-none"></div>
       <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 p-6 sm:p-9 items-center">
         <div>
-          <div class="flex flex-wrap items-center gap-3 mb-4">
+          <div class="flex flex-wrap items-center gap-2.5 mb-4">
             <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-terazi-accent/50 bg-terazi-accent/10 text-terazi-accent-soft font-mono text-[10px] font-bold tracking-[0.2em] uppercase">
               <Scale :size="12" /> {{ t.projects.flagshipBadge }}
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-tactical-accent/40 bg-tactical-accent/10 text-tactical-accent font-mono text-[10px] font-bold tracking-[0.12em] uppercase">
+              <Award :size="12" /> {{ t.terazi.accolade }}
             </span>
             <span class="font-mono text-[11px] text-cyber-cyan/70 tracking-wider">www.terazi.app</span>
           </div>
@@ -172,8 +124,8 @@ const filteredProjects = computed(() =>
       <ProjectCard
         v-for="project in filteredProjects"
         :key="project.id"
-        :title="project.title"
-        :description="project.description"
+        :title="project.title[currentLanguage]"
+        :description="project.description[currentLanguage]"
         :tech-stack="project.techStack"
         :live-url="project.liveUrl"
         :repo-url="project.repoUrl"
