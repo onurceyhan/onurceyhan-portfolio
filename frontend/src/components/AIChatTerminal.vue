@@ -211,17 +211,17 @@ function handleKeyPress(event) {
 </script>
 
 <template>
-  <div class="glass-panel-bright h-[400px] sm:h-[480px] flex flex-col relative overflow-hidden border-2 border-cyber-cyan/20 hover:border-cyber-cyan/40 transition-all">
+  <div class="glass-panel-bright h-full min-h-[400px] sm:min-h-[480px] flex flex-col relative overflow-hidden border border-cyber-cyan/20 hover:border-cyber-cyan/40 transition-all">
     <!-- Terminal Header -->
-    <div class="px-3 sm:px-4 py-2 sm:py-3 border-b border-cyber-cyan/30 flex items-center justify-between bg-gradient-to-r from-cyber-black/90 to-tactical-surface/90">
+    <div class="px-3 sm:px-4 py-2 sm:py-3 border-b border-cyber-cyan/20 flex items-center justify-between bg-cyber-black/80">
       <div class="flex items-center gap-3">
-        <Cpu :size="18" class="text-cyber-cyan animate-pulse drop-shadow-[0_0_8px_rgba(3,216,243,0.6)]" />
-        <span class="font-mono text-sm font-bold text-cyber-yellow drop-shadow-[0_0_6px_rgba(252,238,12,0.4)]">{{ t.chat.title }}</span>
+        <Cpu :size="18" class="text-cyber-cyan" />
+        <span class="font-mono text-sm font-bold text-cyber-yellow">{{ t.chat.title }}</span>
       </div>
       <div class="flex gap-2">
-        <div class="w-3 h-3 rounded-full bg-cyber-cyan/70 shadow-lg shadow-cyber-cyan/50"></div>
-        <div class="w-3 h-3 rounded-full bg-cyber-yellow/70 shadow-lg shadow-cyber-yellow/50"></div>
-        <div class="w-3 h-3 rounded-full bg-red-500/60"></div>
+        <div class="w-3 h-3 rounded-full bg-cyber-cyan/60"></div>
+        <div class="w-3 h-3 rounded-full bg-cyber-yellow/60"></div>
+        <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
       </div>
     </div>
 
@@ -314,7 +314,7 @@ function handleKeyPress(event) {
           <component 
             :is="isConnected ? Zap : WifiOff" 
             :size="12" 
-            :class="isConnected ? 'text-cyber-cyan animate-pulse drop-shadow-[0_0_6px_rgba(3,216,243,0.5)]' : 'text-red-400'"
+            :class="isConnected ? 'text-tactical-accent' : 'text-red-400'"
           />
           <span class="text-xs font-mono font-bold" :class="isConnected ? 'text-cyber-yellow' : 'text-red-400'">
             {{ isConnected ? t.chat.online : t.chat.offline_short }}

@@ -19,51 +19,48 @@ const toggleLanguage = () => {
 <template>
   <div class="min-h-screen grid-bg">
 
-    <!-- Cyber Navigation Bar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-cyber-black/90 backdrop-blur-xl border-b-2 border-cyber-cyan/30 shadow-lg shadow-cyber-cyan/10">
-      <div class="container mx-auto px-3 sm:px-4 py-3 sm:py-4 flex items-center justify-between gap-2">
-        <div class="flex items-center gap-2 sm:gap-3">
-          <div class="w-2 h-2 rounded-full bg-cyber-cyan animate-pulse shadow-lg shadow-cyber-cyan/50"></div>
-          <span class="text-sm sm:text-lg font-mono font-black text-cyber-yellow drop-shadow-[0_0_10px_rgba(252,238,12,0.5)]">ONUR_CEYHAN</span>
-          <div class="hidden sm:block h-4 w-px bg-gradient-to-b from-cyber-cyan to-cyber-yellow ml-2"></div>
-          <span class="hidden md:block text-xs font-mono text-cyber-cyan/70 font-semibold">PORTFOLIO.SYS</span>
-        </div>
-        
-        <div class="flex gap-1 sm:gap-2 items-center flex-wrap">
-          <button 
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-tactical-bg/80 backdrop-blur-xl border-b border-tactical-border/70">
+      <div class="container mx-auto px-3 sm:px-4 lg:px-6 py-3 sm:py-4 flex items-center justify-between gap-2">
+        <button @click="currentView = 'home'" class="flex items-center gap-2.5 group">
+          <span class="w-2 h-2 rounded-full bg-tactical-accent animate-pulse-glow"></span>
+          <span class="text-sm sm:text-base font-bold tracking-tight text-tactical-text-primary group-hover:text-tactical-accent transition-colors">Onur Ceyhan</span>
+        </button>
+
+        <div class="flex gap-1 sm:gap-2 items-center">
+          <button
             @click="currentView = 'home'"
-            class="px-2 sm:px-4 py-1.5 sm:py-2 font-mono font-bold uppercase tracking-wider rounded transition-all border-2 whitespace-nowrap"
-            style="font-size: clamp(0.625rem, 0.8vw + 0.125rem, 0.75rem);"
-            :class="currentView === 'home' 
-              ? 'bg-cyber-cyan/20 text-cyber-cyan border-cyber-cyan/60 shadow-lg shadow-cyber-cyan/30' 
-              : 'text-cyber-cyan/70 border-cyber-cyan/20 hover:text-cyber-yellow hover:border-cyber-yellow/40 hover:bg-cyber-yellow/10'"
+            class="relative px-3 sm:px-4 py-1.5 sm:py-2 font-medium rounded-lg transition-colors whitespace-nowrap"
+            style="font-size: clamp(0.75rem, 0.8vw + 0.2rem, 0.875rem);"
+            :class="currentView === 'home'
+              ? 'text-tactical-accent bg-tactical-accent/10'
+              : 'text-tactical-text-secondary hover:text-tactical-text-primary'"
           >
             {{ t.nav.home }}
           </button>
-          <button 
+          <button
             @click="currentView = 'projects'"
-            class="px-2 sm:px-4 py-1.5 sm:py-2 font-mono font-bold uppercase tracking-wider rounded transition-all border-2 whitespace-nowrap"
-            style="font-size: clamp(0.625rem, 0.8vw + 0.125rem, 0.75rem);"
-            :class="currentView === 'projects' 
-              ? 'bg-cyber-cyan/20 text-cyber-cyan border-cyber-cyan/60 shadow-lg shadow-cyber-cyan/30' 
-              : 'text-cyber-cyan/70 border-cyber-cyan/20 hover:text-cyber-yellow hover:border-cyber-yellow/40 hover:bg-cyber-yellow/10'"
+            class="relative px-3 sm:px-4 py-1.5 sm:py-2 font-medium rounded-lg transition-colors whitespace-nowrap"
+            style="font-size: clamp(0.75rem, 0.8vw + 0.2rem, 0.875rem);"
+            :class="currentView === 'projects'
+              ? 'text-tactical-accent bg-tactical-accent/10'
+              : 'text-tactical-text-secondary hover:text-tactical-text-primary'"
           >
             {{ t.nav.projects }}
           </button>
-          
-          <!-- Language Switcher -->
-          <div class="hidden sm:block h-8 w-px bg-cyber-cyan/30 mx-1"></div>
+
+          <div class="hidden sm:block h-5 w-px bg-tactical-border mx-1.5"></div>
           <button
             @click="toggleLanguage"
-            class="group flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 bg-cyber-cyan/10 border-2 border-cyber-cyan/40 hover:border-cyber-yellow/60 rounded transition-all hover:bg-cyber-yellow/10 hover:shadow-lg hover:shadow-cyber-yellow/20"
+            class="group flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 sm:py-2 border border-tactical-border/80 hover:border-tactical-accent/50 rounded-lg transition-colors"
             :title="currentLanguage === 'tr' ? 'Switch to English' : 'Türkçe\'ye geç'"
           >
-            <img 
-              :src="currentLanguage === 'tr' ? '/images/flag-tr.svg' : '/images/flag-uk.svg'" 
-              :alt="currentLanguage === 'tr' ? 'Turkish Flag' : 'UK Flag'" 
-              class="w-5 h-auto group-hover:scale-110 transition-transform" 
+            <img
+              :src="currentLanguage === 'tr' ? '/images/flag-tr.svg' : '/images/flag-uk.svg'"
+              :alt="currentLanguage === 'tr' ? 'Turkish Flag' : 'UK Flag'"
+              class="w-5 h-auto group-hover:scale-105 transition-transform"
             />
-            <span class="hidden sm:inline font-mono font-bold text-cyber-cyan group-hover:text-cyber-yellow uppercase" style="font-size: clamp(0.625rem, 0.8vw, 0.75rem);">
+            <span class="hidden sm:inline font-medium text-tactical-text-secondary group-hover:text-tactical-text-primary uppercase" style="font-size: clamp(0.7rem, 0.8vw, 0.8rem);">
               {{ currentLanguage === 'tr' ? 'TR' : 'EN' }}
             </span>
           </button>
@@ -73,9 +70,36 @@ const toggleLanguage = () => {
 
     <!-- Main Content with top padding for fixed nav -->
     <div class="pt-16 sm:pt-20">
-      <HomeView v-if="currentView === 'home'" />
-      <ProjectsView v-else />
+      <Transition name="view" mode="out-in">
+        <HomeView v-if="currentView === 'home'" @navigate="currentView = $event" />
+        <ProjectsView v-else />
+      </Transition>
     </div>
   </div>
 </template>
+
+<style scoped>
+.view-enter-active,
+.view-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.view-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.view-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .view-enter-active,
+  .view-leave-active {
+    transition: none;
+  }
+  .view-enter-from,
+  .view-leave-to {
+    transform: none;
+  }
+}
+</style>
 

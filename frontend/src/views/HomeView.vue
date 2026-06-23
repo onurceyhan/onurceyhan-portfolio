@@ -1,49 +1,67 @@
 <script setup>
+import { ArrowRight } from 'lucide-vue-next'
 import HeroSection from '../components/HeroSection.vue'
+import Capabilities from '../components/Capabilities.vue'
+import TeraziShowcase from '../components/TeraziShowcase.vue'
+import RagPipeline from '../components/RagPipeline.vue'
 import AIChatTerminal from '../components/AIChatTerminal.vue'
 import TechArsenal from '../components/TechArsenal.vue'
-import DevOpsMonitor from '../components/DevOpsMonitor.vue'
-import ProjectFiles from '../components/ProjectFiles.vue'
+import { useReveal } from '../composables/useReveal'
+import { useLanguage } from '../composables/useLanguage'
+
+const { t } = useLanguage()
+const emit = defineEmits(['navigate'])
+
+useReveal()
 </script>
 
 <template>
-  <div class="container mx-auto px-3 sm:px-4 py-4 sm:py-8 min-h-screen">
-    <!-- Bento Grid Layout -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-4 h-full">
-      
-      <!-- Hero Section - Mobile: full, Tablet: 2 cols, Desktop: 7 cols -->
-      <div class="sm:col-span-2 lg:col-span-7 lg:row-span-2 min-h-[300px] sm:min-h-[400px]">
-        <HeroSection />
-      </div>
+  <div class="container mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-8 space-y-4 sm:space-y-8">
 
-      <!-- AI Chat Terminal - Mobile: full, Tablet: 2 cols, Desktop: 5 cols -->
-      <div class="sm:col-span-2 lg:col-span-5 lg:row-span-4 min-h-[400px] sm:min-h-[500px]">
-        <AIChatTerminal />
-      </div>
+    <!-- Hero -->
+    <section class="min-h-[360px] sm:min-h-[440px]">
+      <HeroSection />
+    </section>
 
-      <!-- Tech Arsenal - Mobile: full, Tablet: 2 cols, Desktop: 7 cols -->
-      <div class="sm:col-span-2 lg:col-span-7 lg:row-span-1 min-h-[250px]">
+    <!-- Ne yapıyorum — yetenekler (detaylı) -->
+    <section class="scroll-mt-24">
+      <Capabilities />
+    </section>
+
+    <!-- RAG mimarisi nasıl çalışır -->
+    <section class="scroll-mt-24">
+      <RagPipeline />
+    </section>
+
+    <!-- En büyük projem — Terazi (canlı örnek) -->
+    <section id="terazi" class="scroll-mt-24">
+      <TeraziShowcase />
+    </section>
+
+    <!-- Tech + interaktif AI demo -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
+      <div class="lg:col-span-7 reveal">
         <TechArsenal />
       </div>
-
-      <!-- DevOps Monitor - Mobile: full, Tablet: 1 col, Desktop: 4 cols -->
-      <div class="sm:col-span-1 lg:col-span-4 lg:row-span-1 min-h-[200px]">
-        <DevOpsMonitor />
+      <div class="lg:col-span-5 min-h-[440px] reveal reveal-delay-1">
+        <AIChatTerminal />
       </div>
+    </section>
 
-      <!-- Project Files - Mobile: full, Tablet: 1 col, Desktop: 3 cols -->
-      <div class="sm:col-span-1 lg:col-span-3 lg:row-span-1 min-h-[200px]">
-        <ProjectFiles />
+    <!-- Tüm projeler CTA -->
+    <section class="reveal flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 glass-panel p-6 sm:p-8 border border-cyber-cyan/20">
+      <div>
+        <h3 class="font-black text-cyber-yellow text-xl sm:text-2xl mb-1">{{ t.projects.title.replace('_', ' ') }}</h3>
+        <p class="text-tactical-text-secondary text-sm max-w-md">{{ t.projects.subtitle }}</p>
       </div>
+      <button
+        @click="emit('navigate', 'projects')"
+        class="group inline-flex items-center gap-2 px-6 py-3 bg-cyber-cyan/10 border border-cyber-cyan/50 hover:border-cyber-yellow hover:bg-cyber-yellow/10 rounded text-cyber-cyan hover:text-cyber-yellow font-mono font-bold text-sm uppercase tracking-wider transition-all whitespace-nowrap"
+      >
+        {{ t.nav.projects }}
+        <ArrowRight :size="16" class="group-hover:translate-x-1 transition-transform" />
+      </button>
+    </section>
 
-    </div>
   </div>
 </template>
-
-<style scoped>
-/* Ensure consistent grid item heights */
-.grid > div {
-  min-height: 200px;
-}
-</style>
-
