@@ -118,7 +118,8 @@ const translations = {
       placeholderLimit: 'Demo limiti ulaşıldı...',
       poweredBy: 'Powered by',
       demoLimit: 'Demo limiti ulaşıldı - Tam danışmanlık için iletişime geç',
-      backendOffline: 'Backend çevrimdışı'
+      backendOffline: 'Backend çevrimdışı',
+      wordLimit: '⚠️ Lütfen daha kısa bir soru sorun (maksimum {max} kelime). Mevcut: {current} kelime.'
     },
     tech: {
       title: 'TEKNOLOJİ_CEPHANESİ',
@@ -264,7 +265,8 @@ const translations = {
       placeholderLimit: 'Demo limit reached...',
       poweredBy: 'Powered by',
       demoLimit: 'Demo limit reached - Contact for full consultation',
-      backendOffline: 'Backend offline'
+      backendOffline: 'Backend offline',
+      wordLimit: '⚠️ Please ask a shorter question (maximum {max} words). Current: {current} words.'
     },
     tech: {
       title: 'TECH_ARSENAL',

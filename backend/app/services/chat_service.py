@@ -79,7 +79,7 @@ class ChatService:
                     ],
                     model="llama-3.3-70b-versatile",
                     temperature=0.7,
-                    max_tokens=150
+                    max_tokens=200
                 )
                 
                 return {
@@ -96,16 +96,23 @@ class ChatService:
                 }
         else:
             # Mock responses
-            if "proje" in message_lower or "project" in message_lower:
+            if "terazi" in message_lower:
                 return {
-                    "reply": "Onur'un 5 önemli projesi var: Psikoloji Kliniği, Ceyhan Farm, Metal Band Website, Araç Kiralama ve TagWise. Hangi proje ilginizi çekiyor?",
+                    "reply": "Terazi (www.terazi.app), Onur'un en büyük projesi: 906 kanun ve 200.000+ Yargıtay kararı üzerinde RAG ile çalışan bir AI hukuk asistanı. BIGG+ Boğaziçi 1. Aşama onayı aldı.",
                     "source": "Mock",
                     "model": "none"
                 }
-            
+
+            if "proje" in message_lower or "project" in message_lower:
+                return {
+                    "reply": "Onur'un en büyük projesi Terazi (AI hukuk asistanı, www.terazi.app). Ayrıca Psikoloji Kliniği, Ceyhan Çiftliği, Metal Band, Araç Kiralama ve TagWise projeleri var. Hangisini merak ediyorsunuz?",
+                    "source": "Mock",
+                    "model": "none"
+                }
+
             if "skill" in message_lower or "yetenek" in message_lower or "teknoloji" in message_lower:
                 return {
-                    "reply": "Onur, Python (FastAPI, Django), Vue.js, Docker ve AI/ML konularında uzman. Full-stack geliştirme ve cloud deployment deneyimine sahip.",
+                    "reply": "Onur, RAG sistemleri ve LLM uygulamaları kurabiliyor (Python, FastAPI, pgvector, Supabase). Ayrıca Vue.js ile modern web siteleri geliştiriyor. En büyük örneği: Terazi AI hukuk asistanı.",
                     "source": "Mock",
                     "model": "none"
                 }

@@ -108,7 +108,9 @@ async function sendMessage() {
   if (wordCount > MAX_WORDS) {
     messages.value.push({
       role: 'assistant',
-      content: `⚠️ Lütfen daha kısa bir soru sorun (maksimum ${MAX_WORDS} kelime). Mevcut: ${wordCount} kelime.`,
+      content: t.value.chat.wordLimit
+        .replace('{max}', MAX_WORDS)
+        .replace('{current}', wordCount),
       timestamp: getCurrentTime(),
       status: 'warning'
     })
